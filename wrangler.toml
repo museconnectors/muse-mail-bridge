@@ -1,0 +1,22 @@
+# Cloudflare Workers project: muse-mail-bridge
+#
+# Deploy: in the Cloudflare dashboard, Workers & Pages -> Create ->
+# Connect to Git -> select this repository. It deploys as-is; no build
+# step and no code editing in the dashboard editor is needed. Pushes to
+# the production branch redeploy automatically.
+name = "muse-mail-bridge"
+main = "muse-mail-bridge.js"
+compatibility_date = "2025-01-01"
+
+# Configuration is read from environment variables, set in the dashboard
+# (Worker -> Settings -> Variables and Secrets):
+#
+#   Secrets (type: Secret — never commit these values):
+#     BRIDGE_TOKEN   long random string; the same value goes into the
+#                    Muse connector credential slot.
+#     MAIL_PASS      the mailbox password.
+#
+#   Plain text variables:
+#     MAIL_USER      the mailbox address, e.g. you@your-domain.example
+#     IMAP_HOST      the Sakura initial domain, e.g. your-initial-domain.sakura.ne.jp
+#     SMTP_HOST      same as IMAP_HOST
